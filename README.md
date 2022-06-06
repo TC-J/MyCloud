@@ -9,4 +9,4 @@ But run `npm install` and edit the MySQL connection string in `server/server.js`
 Then run `npm run start` in the main directory to start the react-server and open the page, and then the same thing in the server
 directory -- the react demo-server will proxy API calls to the node-server.
 
-Right now, though, the backend isn't connected to the frontend.
+Right now, though, the frontend isn't doing any calls to the backend.
