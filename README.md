@@ -1,5 +1,6 @@
 # MyCloud
 
+![Screenshot](mycloud_login_ss.png)
 
 ### Building & Running
 Right now all you can do is view the login screen.
