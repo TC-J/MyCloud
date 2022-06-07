@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import axios from 'axios'
 
 import ButtonGroup from '@mui/material/ButtonGroup'
 import Button from '@mui/material/Button'
@@ -35,7 +36,7 @@ const App = () =>
     }
 
     if (rForm.password.length < 8) {
-      setRForm({...rForm, pwError: true, pwErrorStr: 'password needs to be at least 8 characters long', pwMatchErrorStr: 'reconfirm password pls..'});
+      setRForm({...rForm, pwError: true, pwErrorStr: 'password needs to be at least 8 characters long', pwMatchErrorStr: 'reconfirm password'});
       valid = false
     }
 
@@ -58,6 +59,12 @@ const App = () =>
 
     if (valid) {
       // create new database entry
+      var res = fetch("http://localhost:3000/users/new", {
+        method: 'POST',
+        body: JSON.stringify({ email: rForm.email, password: rForm.password}),
+        headers: { 'Content-Type': 'application/json' }
+      }).then((v) => { console.log(v) }).catch((e) => { console.log(e) })
+
     }
   }
 
@@ -106,7 +113,7 @@ const App = () =>
           <TextField
             sx={{margin: "5px 0"}}
             color="secondary"
-            error={!rForm.pwMatch}
+            error={!rForm.pwMatch || rForm.pwError}
             required
             autoFocus
             type="password"
